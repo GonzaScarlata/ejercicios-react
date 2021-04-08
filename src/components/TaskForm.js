@@ -1,10 +1,16 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import TasksList from './TasksList';
 
 
 const TaskForm = () => {
+    let localeStorageTasks = JSON.parse(localStorage.getItem("arrayTasks")) || [];
     const [task, setTask] = useState({task:"", id:""});
-    const [arrayTasks, setArrayTasks] = useState([]);
+    const [arrayTasks, setArrayTasks] = useState(localeStorageTasks);
+
+    useEffect(() => {
+        let tasksToSave = JSON.stringify(arrayTasks);
+        localStorage.setItem("arrayTasks", tasksToSave);
+    }, [arrayTasks])
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -29,13 +35,14 @@ const TaskForm = () => {
     return (
         <div className="container my-5">
             <form onSubmit={handleSubmit}>
-                <label for="formGroupExampleInput">Tarea</label>
+                <label className="text-light" for="formGroupExampleInput">Tarea</label>
                 <div class="form-group d-flex justify-content-between">
                     <input 
                         type="text" 
                         class="form-control" 
                         placeholder="Escriba una tarea" 
                         onChange={handleChange}
+                        value={task.task}
                     />
                     <button className="btn btn-outline-light btn-primary" type="submit">
                             Agregar

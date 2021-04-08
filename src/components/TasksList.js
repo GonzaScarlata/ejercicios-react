@@ -9,6 +9,7 @@ const TasksList = (props) => {
                     <ListItem 
                         value={value.task} 
                         taskId={value.id} 
+                        key={value.id}
                         index={index}
                         deleteTask={props.deleteTask}/>
                 ))}

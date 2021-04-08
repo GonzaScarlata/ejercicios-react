@@ -6,13 +6,18 @@ const Header = (props) => {
 
     const handleChange = (e) => {
         e.preventDefault();
-        setMsj(" (from changed state)");
+        if (msj === "") {
+            setMsj(" (from changed state)");
+        } else {
+            setMsj("");
+        }
+        
     }
 
     return (
         <div className="container">
-            <h1>Hello {props.name}{msj}!</h1>
-            <button onClick={handleChange}>
+            <h1 className="my-4 text-light">Hello {props.name}{msj}!</h1>
+            <button className="btn-primary btn" onClick={handleChange}>
                 Click me
             </button>
         </div>
