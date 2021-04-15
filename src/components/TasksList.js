@@ -11,7 +11,8 @@ const TasksList = (props) => {
                         taskId={value.id} 
                         key={value.id}
                         index={index}
-                        deleteTask={props.deleteTask}/>
+                        deleteTask={props.deleteTask}
+                    />
                 ))}
             </ul>
         </div>

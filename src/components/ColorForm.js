@@ -22,6 +22,17 @@ const ColorForm = () => {
         setColor(color);
     };
 
+    // No estoy pudiendo usar este método para eliminar colores
+    const deleteColor = (index) => {
+        let newArray = colorsArray;
+        for (let i = 0; i < colorsArray.length; i++){
+            if (i === index) {
+                newArray.splice(i, 1);
+            }
+        }
+        setColorsArray(newArray);
+    }
+
     return (
         <div className="container my-5">
             <form onSubmit={handleSubmit}>
@@ -44,7 +55,7 @@ const ColorForm = () => {
                     </button>
                 </div>
             </form>
-            <ColorSection colorsArray={colorsArray} />
+            <ColorSection colorsArray={colorsArray} deleteColor={deleteColor} />
         </div>
     );
 };
