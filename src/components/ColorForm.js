@@ -6,6 +6,7 @@ const ColorForm = () => {
     const colorsFromLS = JSON.parse(localStorage.getItem("colorsArray")) || [];
     const [colorsArray, setColorsArray] = useState(colorsFromLS);
     const [color, setColor] = useState("");
+    
 
     useEffect(() => {
         localStorage.setItem("colorsArray",JSON.stringify(colorsArray))
@@ -28,9 +29,10 @@ const ColorForm = () => {
         for (let i = 0; i < colorsArray.length; i++){
             if (i === index) {
                 newArray.splice(i, 1);
+                setColorsArray(newArray);
             }
         }
-        setColorsArray(newArray);
+        console.log(newArray);
     }
 
     return (
